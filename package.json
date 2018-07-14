@@ -1,0 +1,37 @@
+{
+  "name": "spotifyzer",
+  "version": "1.0.0",
+  "description": "Provide access to Spotify users data and playlists.",
+  "main": "server.js",
+  "scripts": {
+    "client-install": "cd client && npm install",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "start": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lunikit/Spotifyzer.git"
+  },
+  "keywords": [
+    "React",
+    "Mobx"
+  ],
+  "author": "Mikita Luksha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lunikit/Spotifyzer/issues"
+  },
+  "homepage": "https://github.com/lunikit/Spotifyzer#readme",
+  "dependencies": {
+    "concurrently": "^3.6.0",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "querystring": "^0.2.0",
+    "request": "^2.87.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.2"
+  }
+}

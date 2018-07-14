@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
+import PropTypes from 'prop-types';
 
 import logo from './logo.svg';
 import './App.css';
@@ -25,5 +26,9 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  ShoeStore: PropTypes.object.isRequired,
+};
 
 export default App;

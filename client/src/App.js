@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import PropTypes from 'prop-types';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+} from 'react-router-dom';
 
-import logo from './logo.svg';
+import {
+  Home,
+  Search,
+} from './modules';
+import { PrivateRoute } from './controls';
+
 import './App.css';
 
 
@@ -13,22 +23,26 @@ class App extends Component {
     const { store: { testStore } } = this.props;
 
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React { testStore.text }</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-          <a href="http://localhost:5000/login" className="btn btn-primary">Log in with Spotify</a>
-        </p>
-      </div>
+      <Router>
+        <div>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/Search">Search</Link>
+            </li>
+          </ul>
+          <Route exact path="/" component={Home} />
+          <PrivateRoute isAvailable={false} path="/Search" component={Search} />
+        </div>
+      </Router>
     );
   }
 }
 
 App.propTypes = {
-  store: PropTypes.object
+  store: PropTypes.object,
 };
 
 export default App;

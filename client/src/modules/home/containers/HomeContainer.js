@@ -9,6 +9,9 @@ import Home from '../components/Home';
 @observer
 class HomeContainer extends Component {
   render() {
+    const { accessToken, refreshToken } = this.props.match.params;
+    console.log(accessToken, refreshToken);
+
     const { store } = this.props;
     const props = {
     };

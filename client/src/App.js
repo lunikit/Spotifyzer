@@ -34,6 +34,7 @@ class App extends Component {
             </li>
           </ul>
           <Route exact path="/" component={Home} />
+          <Route exact path="/:accessToken/:refreshToken" component={Home} />
           <PrivateRoute isAvailable={false} path="/Search" component={Search} />
         </div>
       </Router>

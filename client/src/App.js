@@ -6,17 +6,17 @@ import logo from './logo.svg';
 import './App.css';
 
 
-@inject('ShoeStore')
+@inject('store')
 @observer
 class App extends Component {
   render() {
-    const { ShoeStore } = this.props;
+    const { store: { testStore } } = this.props;
 
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React { ShoeStore.text }</h1>
+          <h1 className="App-title">Welcome to React { testStore.text }</h1>
         </header>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
@@ -28,7 +28,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-  ShoeStore: PropTypes.object.isRequired,
+  store: PropTypes.object.isRequired,
 };
 
 export default App;

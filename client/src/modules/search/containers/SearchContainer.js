@@ -8,7 +8,8 @@ import Search from '../components/Search';
 @inject('store')
 @observer
 class SearchContainer extends Component {
-  onSearch = () => {
+  onSearch = (e) => {
+    e.preventDefault();
     const { store: { searchStore } } = this.props;
 
     searchStore.search();

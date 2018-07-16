@@ -8,9 +8,31 @@ import Search from '../components/Search';
 @inject('store')
 @observer
 class SearchContainer extends Component {
+  onSearch = () => {
+    const { store: { searchStore } } = this.props;
+
+    searchStore.search();
+  }
+
+  onChangeSearchText = (e) => {
+    const { store: { searchStore } } = this.props;
+
+    searchStore.changeSearchText({ text: e.target.value });
+  }
+
   render() {
-    const { store } = this.props;
+    const { store: { searchStore } } = this.props;
+    const {
+      text, loading, albums, isEmpty,
+    } = searchStore;
+
     const props = {
+      text,
+      loading,
+      onSearch: this.onSearch,
+      onChangeSearchText: this.onChangeSearchText,
+      albums,
+      isEmpty,
     };
 
     return (

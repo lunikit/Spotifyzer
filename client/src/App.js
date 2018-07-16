@@ -5,6 +5,7 @@ import {
   BrowserRouter as Router,
   Route,
 } from 'react-router-dom';
+import createBrowserHistory from 'history/createBrowserHistory';
 
 import {
   Home,
@@ -15,6 +16,8 @@ import { PrivateRoute } from './controls';
 
 import './App.css';
 
+const history = createBrowserHistory();
+
 
 @inject('store')
 @observer
@@ -24,7 +27,7 @@ class App extends Component {
     const { isAuthenticated } = authStore;
 
     return (
-      <Router>
+      <Router history={history}>
         <div>
           <Header />
           <Route exact path="/" component={Home} />

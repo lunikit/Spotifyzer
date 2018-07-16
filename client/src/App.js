@@ -11,6 +11,7 @@ import {
   Home,
   Search,
   Header,
+  Album,
 } from './modules';
 import { PrivateRoute } from './controls';
 
@@ -41,8 +42,9 @@ class App extends Component {
         <div>
           <Header />
           <Route exact path="/" component={Home} />
-          <Route exact path="/:accessToken/:refreshToken" component={Home} />
+          <Route exact path="/login/:accessToken/:refreshToken" component={Home} />
           <PrivateRoute isAvailable={isAuthenticated} path="/Search" component={Search} />
+          <PrivateRoute isAvailable={isAuthenticated} path="/Album/:id" component={Album} />
         </div>
       </Router>
     );

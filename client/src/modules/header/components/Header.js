@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+
 const Header = ({ isAuthenticated, userName, onLogout }) => (
   <div className="">
     <header className="blog-header py-3">
@@ -18,13 +19,15 @@ const Header = ({ isAuthenticated, userName, onLogout }) => (
             )}
           </ul>
         </div>
-        <div className="col-4 d-flex justify-content-between align-items-center">
+        <div className="col-2 d-flex justify-content-between align-items-center">
           <span className="text-muted">{ userName }</span>
+        </div>
+        <div className="col-2">
           { isAuthenticated && (
-            <a className="btn btn-sm btn-outline-secondary" href="#" onClick={onLogout}>Logout</a>
+            <a className="btn btn-sm btn-outline-secondary btn-block" href="#" onClick={onLogout}>Logout</a>
           )}
           { !isAuthenticated && (
-            <a className="btn btn-sm btn-outline-secondary" href="http://localhost:5000/login">Login</a>
+            <a className="btn btn-outline-secondary btn-block" href="http://localhost:5000/login">Login</a>
           )}
         </div>
       </div>

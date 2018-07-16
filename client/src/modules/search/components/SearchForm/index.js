@@ -9,7 +9,7 @@ const SearchForm = ({ text, loading, onSearch, onChangeSearchText }) => (
         <input onChange={onChangeSearchText} value={text} type="text" className="form-control" placeholder="Type something to start search" />
       </div>
       <div className="col-sm-2">
-        <button type="submit" form="searchForm" value="Submit" className="btn btn-outline-primary">{ loading ? "Loading..." : "Search" }</button>
+        <button type="submit" form="searchForm" value="Submit" className="btn btn-outline-primary btn-block">{ loading ? "Loading..." : "Search" }</button>
       </div>
     </div>
   </form>

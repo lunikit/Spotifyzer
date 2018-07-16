@@ -8,10 +8,25 @@ import Album from '../components/Album';
 @inject('store')
 @observer
 class AlbumContainer extends Component {
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    const { store: { albumStore } } = this.props;
+
+    albumStore.loadAlbum({ id });
+  }
+
+  componentWillUnmount() {
+    const { store: { albumStore } } = this.props;
+
+    albumStore.reset();
+  }
+
+
   render() {
-    const { store: { authStore } } = this.props;
+    const { store: { albumStore } } = this.props;
 
     const props = {
+      album: albumStore.album,
     };
 
     return (

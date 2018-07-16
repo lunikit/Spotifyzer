@@ -43,15 +43,6 @@ app.get('/login', function(req, res) {
     }));
 });
 
-app.get('/test', function(req, res) {
-
-  console.log('test')
-
-  res.json({
-    res: 'OK'
-  });
-});
-
 app.get('/callback', function(req, res) {
 
   // your application requests refresh and access tokens

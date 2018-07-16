@@ -22,9 +22,19 @@ const history = createBrowserHistory();
 @inject('store')
 @observer
 class App extends Component {
+  componentDidMount() {
+    const { store: { authStore } } = this.props;
+
+    authStore.init();
+  }
+
   render() {
     const { store: { authStore } } = this.props;
-    const { isAuthenticated } = authStore;
+    const { isAuthenticated, isInited } = authStore;
+
+    if (!isInited) {
+      return null;
+    }
 
     return (
       <Router history={history}>

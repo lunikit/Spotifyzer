@@ -34,6 +34,20 @@ export default class AuthStore {
     }
   })
 
+  init = flow(function* init() {
+    const accessToken = localStorage.getItem(ACCESS_TOKEN);
+    const refreshToken = localStorage.getItem(REFRESH_TOKEN);
+
+    if (accessToken && refreshToken) {
+      yield this.login({
+        accessToken,
+        refreshToken,
+      });
+    }
+
+    this.isInited = true;
+  })
+
   @action logout = () => {
     localStorage.clear();
     this.user = null;
@@ -51,21 +65,4 @@ export default class AuthStore {
       imageUrl,
     };
   }
-
-  getUser = flow(function* getUser({ accessToken }) {
-    const user = yield api(accessToken, '/me');
-
-    this.user = user;
-  })
-
-/*
-  @flow initApp = function* () {
-    const accessToken = localStorage.getItem(ACCESS_TOKEN);
-    const refreshToken = localStorage.getItem(REFRESH_TOKEN);
-
-    // if (accessToken && refreshToken) {
-    //
-    // }
-  }
-  */
 }

@@ -11,9 +11,8 @@ class HeaderContainer extends Component {
   onLogout = (e) => {
     e.preventDefault();
     const { store: { authStore } } = this.props;
-    const { logout } = authStore;
 
-    logout();
+    authStore.logout();
   }
 
   render() {

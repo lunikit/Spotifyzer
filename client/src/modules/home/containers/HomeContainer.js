@@ -8,11 +8,19 @@ import Home from '../components/Home';
 @inject('store')
 @observer
 class HomeContainer extends Component {
-  render() {
+  componentDidMount() {
     const { accessToken, refreshToken } = this.props.match.params;
-    console.log(accessToken, refreshToken);
+    const { store: { authStore } } = this.props;
 
-    const { store } = this.props;
+    if (!authStore.isAuthenticated && accessToken && refreshToken) {
+      authStore.login({
+        accessToken,
+        refreshToken,
+      });
+    }
+  }
+
+  render() {
     const props = {
     };
 

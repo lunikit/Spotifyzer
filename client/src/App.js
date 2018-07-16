@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import {
   BrowserRouter as Router,
   Route,
-  Link,
 } from 'react-router-dom';
 
 import {
   Home,
   Search,
+  Header,
 } from './modules';
 import { PrivateRoute } from './controls';
 
@@ -20,22 +20,16 @@ import './App.css';
 @observer
 class App extends Component {
   render() {
-    const { store: { testStore } } = this.props;
+    const { store: { authStore } } = this.props;
+    const { isAuthenticated } = authStore;
 
     return (
       <Router>
         <div>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/Search">Search</Link>
-            </li>
-          </ul>
+          <Header />
           <Route exact path="/" component={Home} />
           <Route exact path="/:accessToken/:refreshToken" component={Home} />
-          <PrivateRoute isAvailable={false} path="/Search" component={Search} />
+          <PrivateRoute isAvailable={isAuthenticated} path="/Search" component={Search} />
         </div>
       </Router>
     );
